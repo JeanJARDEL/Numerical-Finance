@@ -8,6 +8,12 @@
 #include "black_scholes_1d.hpp"
 #include "black_scholes_2d.hpp"
 #include "heston.hpp"
+#include "r2r1_function.hpp"
+#include "bs.hpp"
+#include "vanilla_boundaries.hpp"
+#include "vanilla_terminal_condition.hpp"
+#include "null_function.hpp"
+#include "pde_grid_2d.hpp"
 #include <iostream>
 #include <vector>
 #include <stdio.h>

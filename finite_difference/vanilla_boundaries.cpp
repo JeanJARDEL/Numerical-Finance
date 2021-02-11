@@ -22,7 +22,7 @@ PutTopBoundary::~PutTopBoundary() {};
 CallBottomBoundary::CallBottomBoundary(double s_min, double strike) : R1R1Function(), s_min(s_min), strike(strike) {};
 
 double CallBottomBoundary::operator()(double t) {
-    return min(s_min - strike, 0.);
+    return max(s_min - strike, 0.);
 };
 
 CallBottomBoundary::~CallBottomBoundary() {};

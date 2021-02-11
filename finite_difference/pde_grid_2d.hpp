@@ -5,11 +5,13 @@
 #include "r1r1_function.hpp"
 #include <vector>
 
+using namespace std;
+
 class PDEGrid2D {
     protected:
         double T;
-        double t_min;
-        double t_max;
+        double x_min;
+        double x_max;
         double h0;
         double h1;
         R2R1Function* a;
@@ -24,49 +26,80 @@ class PDEGrid2D {
         size_t nodes_width;
     
     public:
-        PDEGrid2D(double T, double t_min, double t_max, double h0, double h1,
-                  R2R1Function* a, R2R1Function* b, R2R1Function* r, R2R1Function* f,
-                  R1R1Function* top_boundary_function, R1R1Function* bottom_boundary_function,
-                  R1R1Function* right_boundary_function, vector< vector<double> > nodes,
-                  size_t nodes_height, size_t nodes_width);
-        virtual void fill_nodes() = 0;
+        PDEGrid2D(double maturity,
+                  double minimum_underlying_value,
+                  double maximum_underlying_value,
+                  int underlying_steps,
+                  int nbr_time_steps,
+                  R2R1Function* variance_function,
+                  R2R1Function* trend_function,
+                  R2R1Function* actualization_function,
+                  R2R1Function* source_term_function,
+                  R1R1Function* top_boundary_function,
+                  R1R1Function* bottom_boundary_function,
+                  R1R1Function* right_boundary_function);
+        virtual void fill_nodes();
+        double get_time_zero_value(double spot);
         double get_value(double spot, double time);
+        void display_nodes();
         ~PDEGrid2D();
 
     private:
-        void FillTopAndBottomBoundary();
-        void FillRightBoundary();
+        void fill_top_and_bottom_boundaries();
+        void fill_right_boundary();
 };
 
 class PDEGridExplicit : public PDEGrid2D {
     public:
-        PDEGridExplicit(double T, double t_min, double t_max, double h0, double h1,
-                        R2R1Function* a, R2R1Function* b, R2R1Function* r, R2R1Function* f,
-                        R1R1Function* top_boundary_function, R1R1Function* bottom_boundary_function,
-                        R1R1Function* right_boundary_function, vector< vector<double> > nodes,
-                        size_t nodes_height, size_t nodes_width);
+        PDEGridExplicit(double maturity,
+                        double minimum_underlying_value,
+                        double maximum_underlying_value,
+                        int underlying_steps,
+                        int nbr_time_steps,
+                        R2R1Function* variance_function,
+                        R2R1Function* trend_function,
+                        R2R1Function* actualization_function,
+                        R2R1Function* source_term_function,
+                        R1R1Function* top_boundary_function,
+                        R1R1Function* bottom_boundary_function,
+                        R1R1Function* right_boundary_function);
         void fill_nodes();
         ~PDEGridExplicit();
 };
 
 class PDEGridImplicit : public PDEGrid2D {
     public:
-        PDEGridImplicit(double T, double t_min, double t_max, double h0, double h1,
-                        R2R1Function* a, R2R1Function* b, R2R1Function* r, R2R1Function* f,
-                        R1R1Function* top_boundary_function, R1R1Function* bottom_boundary_function,
-                        R1R1Function* right_boundary_function, vector< vector<double> > nodes,
-                        size_t nodes_height, size_t nodes_width);
+        PDEGridImplicit(double maturity,
+                        double minimum_underlying_value,
+                        double maximum_underlying_value,
+                        int underlying_steps,
+                        int nbr_time_steps,
+                        R2R1Function* variance_function,
+                        R2R1Function* trend_function,
+                        R2R1Function* actualization_function,
+                        R2R1Function* source_term_function,
+                        R1R1Function* top_boundary_function,
+                        R1R1Function* bottom_boundary_function,
+                        R1R1Function* right_boundary_function);
         void fill_nodes();
         ~PDEGridImplicit();
 };
 
 class PDEGridTheta : public PDEGrid2D {
     public:
-        PDEGridTheta(double T, double t_min, double t_max, double h0, double h1,
-                        R2R1Function* a, R2R1Function* b, R2R1Function* r, R2R1Function* f,
-                        R1R1Function* top_boundary_function, R1R1Function* bottom_boundary_function,
-                        R1R1Function* right_boundary_function, vector< vector<double> > nodes,
-                        size_t nodes_height, size_t nodes_width);
+        PDEGridTheta(double maturity,
+                     double minimum_underlying_value,
+                     double maximum_underlying_value,
+                     int underlying_steps,
+                     int nbr_time_steps,
+                     R2R1Function* variance_function,
+                     R2R1Function* trend_function,
+                     R2R1Function* actualization_function,
+                     R2R1Function* source_term_function,
+                     R1R1Function* top_boundary_function,
+                     R1R1Function* bottom_boundary_function,
+                     R1R1Function* right_boundary_function,
+                     double theta);
         void fill_nodes();
         ~PDEGridTheta();
 };

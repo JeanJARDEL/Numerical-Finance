@@ -2,6 +2,6 @@
 #include "finite_difference/TESTER_finite_difference.hpp"
 
 int main() {
-    test_random_generator();
+    //test_random_generator();
     test_finite_difference();
 };
