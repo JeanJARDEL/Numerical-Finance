@@ -36,7 +36,7 @@ void test_finite_difference() {
     double maturity = 1.;
 
     double s_min = 0.;
-    double s_max = 199.;
+    double s_max = 200.;
 
     // 1D Brownian motion
     /*
@@ -93,14 +93,14 @@ void test_finite_difference() {
     R1R1Function* bottom_boundary_condition = new CallBottomBoundary(s_min, strike);
     R1R1Function* right_boundary_condition = new CallTerminalCondition(strike);
 
-    PDEGridExplicit black_scholes_grid(maturity, s_min, s_max, 20, 20,
+    PDEGridExplicit black_scholes_grid(maturity, s_min, s_max, 20000, 0.2,
                                        variance_function, trend_function,
                                        actualization_function, source_term_function,
                                        top_boundary_condition, bottom_boundary_condition,
                                        right_boundary_condition);
 
     black_scholes_grid.fill_nodes();
-    black_scholes_grid.display_nodes();
+    //black_scholes_grid.display_nodes();
     double price_at_zero = black_scholes_grid.get_time_zero_value(spot);
     double price_6_months = black_scholes_grid.get_value(spot, 0.5);
 

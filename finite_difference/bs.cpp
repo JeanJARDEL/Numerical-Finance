@@ -19,7 +19,7 @@ BSVariance::~BSVariance() {};
 BSTrend::BSTrend(double rate) : rate(rate) {};
 
 double BSTrend::operator()(double x, double t) {
-    return rate;
+    return rate * x;
 };
 
 BSTrend::~BSTrend() {};
