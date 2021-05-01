@@ -28,6 +28,7 @@ class Matrix
         Matrix operator+(const Matrix &B) const;
         Matrix operator+(const T &scal) const;
         Matrix& operator=(const Matrix &cop);
+        Matrix cholesky() const;
 
         virtual ~Matrix();
 

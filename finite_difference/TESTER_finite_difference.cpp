@@ -84,6 +84,7 @@ void test_finite_difference() {
     */
 
     // PDE Solver (excplicit)
+    /*
     R2R1Function* variance_function = new BSVariance(volatility);
     R2R1Function* trend_function = new BSTrend(rate);
     R2R1Function* actualization_function = new BSActualization(rate);
@@ -106,4 +107,25 @@ void test_finite_difference() {
 
     printf("The computed price is %6.6f\n", price_at_zero);
     printf("The at-the-money price 6 months before maturity is %6.6f\n", price_6_months);
+    */
+   
+    // Matrix handling
+    Matrix<double> cov(3, 3);
+
+    cov.set_elem_at(0, 0, 1.);
+    cov.set_elem_at(1, 1, 1.);
+    cov.set_elem_at(2, 2, 1.);
+
+    cov.set_elem_at(0, 1, 0.1);
+    cov.set_elem_at(0, 2, 0.1);
+    cov.set_elem_at(1, 0, 0.1);
+    cov.set_elem_at(1, 2, 0.1);
+    cov.set_elem_at(2, 0, 0.1);
+    cov.set_elem_at(2, 1, 0.1);
+
+    std::cout << cov.to_string() << std::endl;
+
+    Matrix<double> low = cov.cholesky();
+
+    std::cout << low.to_string() << std::endl;
 };
