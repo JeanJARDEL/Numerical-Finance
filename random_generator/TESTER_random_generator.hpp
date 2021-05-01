@@ -8,15 +8,14 @@
 #include <vector>
 #include <stdio.h>
 #include <string>
-
-using namespace std;
+#include <type_traits>
 
 template<typename Base, typename T>
 inline bool instanceof(const T*) {
-   return is_base_of<Base, T>::value;
+   return std::is_base_of<Base, T>::value;
 };
 
-void compute_generation(RandomGenerator* generator, string generator_name);
+void compute_generation(RandomGenerator* generator, std::string generator_name);
 
 void test_random_generator();
 

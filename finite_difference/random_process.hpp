@@ -3,13 +3,14 @@
 
 #include "single_path.hpp"
 #include "../random_generator/continuous_generator.hpp"
+#include <cmath>
 
 class RandomProcess {
     protected:
         RandomGenerator* generator;
         vector<SinglePath*> paths;
         int dimension;
-    
+
     public:
         RandomProcess(RandomGenerator* gen, int dim);
         virtual void simulate(double start, double end, size_t nb_steps) = 0;
