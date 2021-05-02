@@ -2,8 +2,8 @@
 
 RandomProcess::RandomProcess(RandomGenerator* gen, int dim) : generator(gen), dimension(dim) {};
 
-SinglePath* RandomProcess::get_path(size_t index) {
-    return paths[index];
+SinglePath* RandomProcess::get_path(int dim) {
+    return paths.at(index);
 };
 
 RandomProcess::~RandomProcess() {};

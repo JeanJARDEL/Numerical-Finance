@@ -1,7 +1,7 @@
 #include "black_scholes_1d.hpp"
 #include "random_process.hpp"
 
-BlackScholes1D::BlackScholes1D(Normal* gen, double spot, double rate, double vol) : RandomProcess(gen, 1), spot(spot), rate(rate), vol(vol) {};
+BlackScholes1D::BlackScholes1D(Normal* gen, double spot, double rate, double vol) : RandomProcess(gen), spot(spot), rate(rate), vol(vol) {};
 
 BlackScholes1D::~BlackScholes1D() {};
 
@@ -32,7 +32,7 @@ void BSMilstein1D::simulate(double start_time, double end_time, size_t nb_steps)
     double generated;
     for (size_t i = 0; i < nb_steps; ++i) {
         generated = generator->generate();
-        double next_value = last_inserted * (1 + (rate - 0.5 * pow(vol, 2)) * dt + vol * generated * sqrt(dt) + 0.5 * dt * pow(vol * generated, 2));
+        double next_value = last_inserted * (1 + rate*dt + vol*generated*std::sqrt(dt));
         path->add_value(next_value);
         last_inserted = next_value;
     }
