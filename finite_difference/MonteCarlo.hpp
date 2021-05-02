@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include "rnr1_function.hpp"
-#include "BlackScholesND.hpp"
+#include "black_scholesND.hpp"
 
 class MonteCarlo{
     public:
