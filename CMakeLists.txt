@@ -62,6 +62,8 @@ set(NUMERICAL_FINANCE_SOURCES
     "finite_difference/heston.cpp"
     "finite_difference/pde_grid_2d.hpp"
     "finite_difference/pde_grid_2d.cpp"
+    "finite_difference/black_scholes_nd.hpp"
+    "finite_difference/black_scholes_nd.cpp"
     "finite_difference/TESTER_finite_difference.hpp"
     "finite_difference/TESTER_finite_difference.cpp"
 

@@ -6,11 +6,11 @@ QuasiRandomGenerator::QuasiRandomGenerator() {};
 
 QuasiRandomGenerator::~QuasiRandomGenerator() {};
 
-VDCHSequence::VDCHSequence(int p, myLong n) : QuasiRandomGenerator(0.5, 1 / 12), p(p), n(n) {};
+VDCHSequence::VDCHSequence(int p, myLong n) : QuasiRandomGenerator(0.5, 1 / 12.), p(p), n(n) {};
 
-VDCHSequence::VDCHSequence(int p) : QuasiRandomGenerator(0.5, 1 / 12), p(p) {};
+VDCHSequence::VDCHSequence(int p) : QuasiRandomGenerator(0.5, 1 / 12.), p(p) {};
 
-VDCHSequence::VDCHSequence() : QuasiRandomGenerator(0.5, 1 / 12) {};
+VDCHSequence::VDCHSequence() : QuasiRandomGenerator(0.5, 1 / 12.) {};
 
 double VDCHSequence::generate() {
     double q = 0.;

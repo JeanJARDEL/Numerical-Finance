@@ -6,4 +6,6 @@ finite_difference/.DS_Store
 random_generator/.DS_Store
 *.o
 *.save
+*.save-failed
 *.cbp
+bin/Debug/Numerical_finance_project.exe
