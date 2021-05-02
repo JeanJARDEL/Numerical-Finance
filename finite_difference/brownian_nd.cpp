@@ -15,10 +15,14 @@ void BrownianND::simulate(double start_time, double end_time, size_t nb_steps) {
             draws.set_elem_at(i, j, generator->generate());
     Matrix<double> prod(dimension, nb_steps);
     prod = cholesky.dot(draws);
-    prod = prod * sqrt(end_time);
+    prod = prod * std::sqrt(end_time);
+    double next_value;
     for(int i = 0; i < dimension; i++) {
+        double last_inserted = 0.;
         for(int j = 0; j < nb_steps; j++) {
-            paths[i]->add_value(prod.elem_at(i, j));
+            next_value = last_inserted + prod.elem_at(i, j);
+            paths[i]->add_value(next_value);
+            last_inserted = next_value;
         }
     }
 }
