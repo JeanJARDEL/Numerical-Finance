@@ -6,11 +6,11 @@
 
 class BlackScholesND : public RandomProcess {
     protected:
-        Matrix<double>* m_initial_spots_matrix;
-        Matrix<double>* m_rates_matrix;
-        Matrix<double>* m_vols_matrix;
-        Matrix<double>* m_corrs_matrix;
-        Matrix<double>* m_spot_at_maturity;
+        Matrix<double> m_initial_spots_matrix;
+        Matrix<double> m_rates_matrix;
+        Matrix<double> m_vols_matrix;
+        Matrix<double> m_corrs_matrix;
+        Matrix<double> *m_spot_at_maturity;
         int m_dimension;
 
     public:

@@ -16,6 +16,7 @@
 #include "null_function.hpp"
 #include "pde_grid_2d.hpp"
 #include "MonteCarlo.hpp"
+#include "static_control_variate.hpp"
 #include "../utils/matrix.hpp"
 #include <iostream>
 #include <vector>

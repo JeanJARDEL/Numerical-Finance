@@ -66,7 +66,7 @@ void test_finite_difference() {
     display_values(path22, "Brownian 3D, 3 :", true);
     */
 
-    Matrix<double> initial_spots(3,1,new double[3]{100,200,142});
+    Matrix<double> initial_spots(3,1,new double[3]{100.,200.,142.});
     Matrix<double> rates(3,1,new double[3]{0.05,0.03,0.01});
     Matrix<double> vols(3,1,new double[3]{0.1,0.2,0.3});
     Matrix<double> corrs(3,3,new double[9]{1.,0.3,0.1,0.3,1.,0.8,0.1,0.8,1.});
@@ -87,7 +87,12 @@ void test_finite_difference() {
     MonteCarlo MC(&payoff_fun,&BSND);
 
     MC.compute_payoff_fixed_number(0., 1., 100, 1000);
-    MC.compute_payoff_conf(0., 1., 100,0.5,0.95);
+    MC.compute_payoff_conf(0., 1., 100,1.,0.95);
+
+    Matrix<double> weights(3,1,new double[3]{0.2,0.5,0.3});
+    StaticControlVariate SCV(normal, &initial_spots, &rates, &vols, &corrs, &weights);
+    double js = SCV.joint_simulation(0., 1., 100, 150.);
+    printf("Joint simulation result: %6.6f\n", js);
 
     /*
     // Euler process
