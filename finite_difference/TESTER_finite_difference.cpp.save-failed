@@ -37,12 +37,14 @@ void test_finite_difference() {
 
     double s_min = 0.;
     double s_max = 200.;
-     /*
+
     // 1D Brownian motion
+    /*
     Brownian1D* brownian1d = new Brownian1D(normal);
     brownian1d->simulate(0., 1., 100);
     SinglePath* path1 = brownian1d->get_path(0);
     display_values(path1, "Brownian 1D :", true);
+    */
 
     // 3D Brownian motion
     Matrix<double>* cor_matrix = new Matrix<double>(3, 3);
@@ -64,37 +66,23 @@ void test_finite_difference() {
     display_values(path20, "Brownian 3D, 1 :", true);
     display_values(path21, "Brownian 3D, 2 :", true);
     display_values(path22, "Brownian 3D, 3 :", true);
-    */
 
-    Matrix<double> initial_spots(3,1,new double[3]{100,200,142});
-    Matrix<double> rates(3,1,new double[3]{0.05,0.03,0.01});
-    Matrix<double> vols(3,1,new double[3]{0.1,0.2,0.3});
-    Matrix<double> corrs(3,3,new double[9]{1.,0.3,0.1,0.3,1.,0.8,0.1,0.8,1.});
-
-    BlackScholesND BSND(normal,&initial_spots,&rates,&vols,&corrs);
-    BSND.simulate(0., 1., 100);
-    SinglePath* path30 = BSND.get_path(0);
-    SinglePath* path31 = BSND.get_path(1);
-    SinglePath* path32 = BSND.get_path(2);
-    display_values(path30, "Black Scholes 3D, 1 :", true);
-    display_values(path31, "Black Scholes 3D, 2 :", true);
-    display_values(path32, "Black Scholes 3D, 3 :", true);
-
-    /*
     // Euler process
-    BlackScholes1D* euler = new BSEuler1D(new Normal(0., 1.), spot, rate, volatility);
-    euler->simulate(0., 1., 300);
+
+    BlackScholes1D* euler = new BSEuler1D(normal, spot, rate, volatility);
+    euler->simulate(0., 1., 100);
     SinglePath* path2 = euler->get_path(0);
     display_values(path2, "Euler :", true);
 
     // Milstein process
-    BlackScholes1D* milstein = new BSMilstein1D(new Normal(0., 1.), spot, rate, volatility);
+    BlackScholes1D* milstein = new BSMilstein1D(normal, spot, rate, volatility);
     milstein->simulate(0., 1., 300);
     SinglePath* path3 = milstein->get_path(0);
     display_values(path3, "Milstein :", true);
 
     // Heston process
-    Heston* heston = new Heston(new Normal(0., 1.), spot, 1., 0., 1., 0.9, volatility, 0.4);
+    /*
+    Heston* heston = new Heston(normal, spot, 1., 0., 1., 0.9, volatility, 0.4);
     heston->simulate(0., 1., 300);
     SinglePath* path4 = heston->get_path(0);
     display_values(path4, "Heston :", true);

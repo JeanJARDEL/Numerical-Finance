@@ -13,7 +13,7 @@ void BSEuler1D::simulate(double start_time, double end_time, size_t nb_steps) {
     double dt = path->get_time_step();
     double last_inserted = spot;
     for (size_t i = 0; i < nb_steps; ++i) {
-        double next_value = last_inserted * (1 + rate * dt + vol * generator->generate() * std::sqrt(dt));
+        double next_value = last_inserted * (1 + rate*dt + vol*generator->generate()*std::sqrt(dt));
         path->add_value(next_value);
         last_inserted = next_value;
     }

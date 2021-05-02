@@ -213,24 +213,20 @@ Matrix<T>& Matrix<T>::operator=(const Matrix &cop){
 
 template <typename T>
 Matrix<T> Matrix<T>::cholesky() const{
-    Matrix<T>* lower = new Matrix<T>(m_rows);
+    Matrix<T>* chol = new Matrix<T>(m_rows);
     for (int i = 0; i < m_rows; i++) {
         for (int j = 0; j <= i; j++) {
             double sum = 0;
-            if (j == i) {
-                for (int k = 0; k < j; k++) {
-                    sum += pow(lower->elem_at(j, k), 2);
-                }
-                lower->set_elem_at(j, j, sqrt(elem_at(j, j) - sum));
-            } else {
-                for (int k = 0; k < j; k++) {
-                    sum += (lower->elem_at(i, k) * lower->elem_at(j, k));
-                }
-                lower->set_elem_at(i, j, (elem_at(i, j) - sum) / lower->elem_at(j, j));
-            }
+            for (int k = 0; k < j; k++)
+                sum += chol->elem_at(i, k) * chol->elem_at(j, k);
+
+            if (j == i)
+                chol->set_elem_at(j, j, sqrt(elem_at(j, j) - sum));
+            else
+                chol->set_elem_at(i, j, (elem_at(i, j) - sum) / chol->elem_at(j, j));
         }
     }
-    return *lower;
+    return *chol;
 }
 
 template <typename T>

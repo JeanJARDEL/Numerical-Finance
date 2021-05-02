@@ -14,7 +14,7 @@ class RandomProcess {
     public:
         RandomProcess(RandomGenerator* gen, int dim = 1);
         virtual void simulate(double start, double end, size_t nb_steps) = 0;
-        SinglePath* get_path(int dim);
+        SinglePath* get_path(int index);
         ~RandomProcess();
 };
 
