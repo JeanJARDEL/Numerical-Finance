@@ -1,5 +1,4 @@
 #include "uniform_generator.hpp"
-#include <cmath>
 
 UniformGenerator::UniformGenerator() : RandomGenerator(0.5, 1 / 12.) {};
 

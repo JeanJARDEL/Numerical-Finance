@@ -10,7 +10,7 @@ void Brownian1D::simulate(double start_time, double end_time, size_t nb_steps) {
     double last_inserted = 0.;
     double next_value;
     for (size_t i = 0; i < nb_steps; ++i) {
-        next_value = last_inserted + generator->generate() * sqrt(dt);
+        next_value = last_inserted + generator->generate() * std::sqrt(dt);
         path->add_value(next_value);
         last_inserted = next_value;
     }

@@ -7,11 +7,14 @@ void compute_generation(RandomGenerator* generator, string generator_name) {
     std::cout << generator->generate() << std::endl;
     std::cout << generator->generate() << std::endl;
     std::cout << generator->generate() << std::endl;
-    RandomGenerator* test_generator = new FiniteSet();
-    string correct_mean = generator->test_mean(n_sim, tol) ? "________ OK" : "________ NOK";
-    printf("Mean : %.4f %s\n", generator->mean(n_sim), correct_mean.c_str());
-    string correct_variance = generator->test_variance(n_sim, tol) ? "____ OK" : "____ NOK";
-    printf("Variance : %.4f %s\n", generator->variance(n_sim), correct_variance.c_str());
+    //RandomGenerator* test_generator = new FiniteSet();
+
+    double* var_ptr = new double;
+    double* mean_ptr = new double;
+    string correct_mean = generator->test_mean(n_sim, tol, mean_ptr) ? "________ OK" : "________ ERROR";
+    printf("Mean : %.4f vs theo. mean: %.4f %s\n", *mean_ptr,generator->get_target_mean(), correct_mean.c_str());
+    string correct_variance = generator->test_variance(n_sim, tol, var_ptr) ? "____ OK" : "____ ERROR";
+    printf("Variance : %.4f vs theo. var: %.4f %s\n", *var_ptr,generator->get_target_variance(), correct_variance.c_str());
     std::cout << std::endl;
 };
 
@@ -20,7 +23,7 @@ void test_random_generator() {
     compute_generation(lcm, "Linear congruential");
 
     RandomGenerator* clcg = new EcuyerCombined();
-    compute_generation(clcg, "Linear congruential");
+    compute_generation(clcg, "Ecuyer combined");
 
     RandomGenerator* head_tail = new HeadTail();
     compute_generation(head_tail, "Head or tail");
@@ -31,16 +34,13 @@ void test_random_generator() {
     RandomGenerator* binomial = new Binomial(100, 0.7);
     compute_generation(binomial, "Binomial");
 
-    vector<double> probas;
-    probas.push_back(0.2);
-    probas.push_back(0.5);
-    probas.push_back(0.3);
+    vector<double> probas { 0.2, 0.5, 0.3};;
     RandomGenerator* finite_set = new FiniteSet(probas);
     compute_generation(finite_set, "Finite set");
 
     RandomGenerator* poisson1 = new Poisson(2.);
     compute_generation(poisson1, "Poisson (1st algo)");
-    
+
     RandomGenerator* poisson2 = new Poisson(2., false);
     compute_generation(poisson2, "Poisson (2nd algo)");
 

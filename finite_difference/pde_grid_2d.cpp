@@ -1,6 +1,6 @@
 #include "pde_grid_2d.hpp"
-#include <vector>
 #include <stdio.h>
+#include <stdexcept>
 
 PDEGrid2D::PDEGrid2D(double maturity,
                      double min_underlying_value,

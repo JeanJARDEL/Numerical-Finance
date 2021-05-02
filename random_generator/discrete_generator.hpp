@@ -17,42 +17,34 @@ class DiscreteGenerator : public RandomGenerator {
 
 class Bernoulli : public DiscreteGenerator {
     private:
-        double p;
-        UniformGenerator* uniform = new EcuyerCombined();
+        double m_p;
+        UniformGenerator* m_uniform = new EcuyerCombined();
 
     public:
         Bernoulli(double p);
         Bernoulli(double p, UniformGenerator* uniform);
-        Bernoulli();
         ~Bernoulli();
 
         virtual double generate();
 };
 
-class HeadTail : public DiscreteGenerator {
-    private:
-        UniformGenerator* uniform = new EcuyerCombined();
-        Bernoulli bernoulli = Bernoulli(0.5, uniform);
-
+class HeadTail : public Bernoulli {
     public:
         HeadTail(UniformGenerator* uniform);
         HeadTail();
         ~HeadTail();
-
-        virtual double generate();
 };
 
 class Binomial : public DiscreteGenerator {
     private:
-        myLong n;
-        double p;
-        UniformGenerator* uniform = new EcuyerCombined();
-        Bernoulli bernoulli = Bernoulli(p, uniform);
+        myLong m_n;
+        double m_p;
+        UniformGenerator* m_uniform = new EcuyerCombined();
+        Bernoulli m_bernoulli = Bernoulli(m_p, m_uniform);
 
     public:
         Binomial(myLong n, double p);
         Binomial(myLong n, double p, UniformGenerator* uniform);
-        Binomial();
         ~Binomial();
 
         virtual double generate();
@@ -60,13 +52,13 @@ class Binomial : public DiscreteGenerator {
 
 class FiniteSet : public DiscreteGenerator {
     protected:
-        vector<double> probabilities;
-        UniformGenerator* uniform = new EcuyerCombined();
+        vector<double> m_probabilities;
+        UniformGenerator* m_uniform = new EcuyerCombined();
+        void adjust_moments();
 
     public:
         FiniteSet(const vector<double>& probabilities);
         FiniteSet(const vector<double>& probabilities, UniformGenerator* uniform);
-        FiniteSet();
         ~FiniteSet();
 
         virtual double generate();
@@ -74,10 +66,10 @@ class FiniteSet : public DiscreteGenerator {
 
 class Poisson : public DiscreteGenerator {
     protected:
-        double lambda;
-        bool poisson_algo = true;
-        UniformGenerator* uniform = new EcuyerCombined();
-        Exponential exponential = Exponential(lambda, uniform);
+        double m_lambda;
+        bool m_poisson_algo = true;
+        UniformGenerator* m_uniform = new EcuyerCombined();
+        Exponential m_exponential = Exponential(m_lambda, m_uniform);
 
     public:
         Poisson(double lambda);
