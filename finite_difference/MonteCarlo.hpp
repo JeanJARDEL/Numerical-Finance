@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
-#include "rnr1_function.h"
-#include "BlackScholesND.h"
+#include "rnr1_function.hpp"
+#include "BlackScholesND.hpp"
 
 class MonteCarlo{
     public:

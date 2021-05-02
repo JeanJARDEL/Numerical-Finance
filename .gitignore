@@ -9,3 +9,4 @@ random_generator/.DS_Store
 *.cbp
 *.exe
 *.depend
+*.layout
