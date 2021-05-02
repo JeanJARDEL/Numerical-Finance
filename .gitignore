@@ -8,3 +8,4 @@ random_generator/.DS_Store
 *.save
 *.cbp
 *.exe
+*.depend
