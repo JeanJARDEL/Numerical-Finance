@@ -2,15 +2,15 @@
 #define BROWNIAN_ND_H
 
 #include "random_process.hpp"
+#include "../utils/matrix.hpp"
 #include <vector>
 
 class BrownianND : public RandomProcess {
     protected:
-        vector< vector<double> >* correlation_matrix;
-        int dimension;
+        Matrix<double>* correlation_matrix;
 
     public:
-        BrownianND(Normal* gen, int dim, vector< vector<double> >* cor);
+        BrownianND(Normal* gen, int dim, Matrix<double>* cor);
         void simulate(double start_time, double end_time, size_t nb_steps);
         ~BrownianND();
 };

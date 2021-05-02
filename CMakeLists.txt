@@ -62,6 +62,9 @@ set(NUMERICAL_FINANCE_SOURCES
     "finite_difference/pde_grid_2d.cpp"
     "finite_difference/TESTER_finite_difference.hpp"
     "finite_difference/TESTER_finite_difference.cpp"
+
+    "utils/matrix.hpp"
+    "utils/matrix.cpp"
     
     main.cpp
 )

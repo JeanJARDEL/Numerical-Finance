@@ -47,17 +47,25 @@ void test_finite_difference() {
     */
 
     // 3D Brownian motion
-    /*
-    vector< vector<double> >* correlation_matrix = {{1., 0.5, 0.2}, {0.5, 1., 0.9}, {0.2, 0.9, 1.}};
-    Brownian1D* browniannd = new BrownianND(normal, correlation_matrix);
-    brownian1d->simulate(0., 1., 100);
+    Matrix<double>* cor_matrix = new Matrix<double>(3, 3);
+    cor_matrix->set_elem_at(0, 0, 1.);
+    cor_matrix->set_elem_at(1, 1, 1.);
+    cor_matrix->set_elem_at(2, 2, 1.);
+    cor_matrix->set_elem_at(0, 1, 0.1);
+    cor_matrix->set_elem_at(0, 2, 0.1);
+    cor_matrix->set_elem_at(1, 0, 0.1);
+    cor_matrix->set_elem_at(1, 2, 0.1);
+    cor_matrix->set_elem_at(2, 0, 0.1);
+    cor_matrix->set_elem_at(2, 1, 0.1);
+
+    BrownianND* browniannd = new BrownianND(normal, 3, cor_matrix);
+    browniannd->simulate(0., 1., 10);
     SinglePath* path20 = browniannd->get_path(0);
     SinglePath* path21 = browniannd->get_path(1);
     SinglePath* path22 = browniannd->get_path(2);
     display_values(path20, "Brownian 3D, 1 :", true);
     display_values(path21, "Brownian 3D, 2 :", true);
     display_values(path22, "Brownian 3D, 3 :", true);
-    */
 
     // Euler process
     /*
@@ -84,6 +92,7 @@ void test_finite_difference() {
     */
 
     // PDE Solver (excplicit)
+    /*
     R2R1Function* variance_function = new BSVariance(volatility);
     R2R1Function* trend_function = new BSTrend(rate);
     R2R1Function* actualization_function = new BSActualization(rate);
@@ -106,4 +115,5 @@ void test_finite_difference() {
 
     printf("The computed price is %6.6f\n", price_at_zero);
     printf("The at-the-money price 6 months before maturity is %6.6f\n", price_6_months);
+    */
 };
