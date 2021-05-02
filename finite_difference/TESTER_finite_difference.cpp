@@ -47,27 +47,25 @@ void test_finite_difference() {
     */
 
     // 3D Brownian motion
-    Matrix<double> cor_matrix(3, 3);
-    cor_matrix.set_elem_at(0, 0, 1.);
-    cor_matrix.set_elem_at(1, 1, 1.);
-    cor_matrix.set_elem_at(2, 2, 1.);
-    cor_matrix.set_elem_at(0, 1, 0.1);
-    cor_matrix.set_elem_at(0, 2, 0.1);
-    cor_matrix.set_elem_at(1, 0, 0.1);
-    cor_matrix.set_elem_at(1, 2, 0.1);
-    cor_matrix.set_elem_at(2, 0, 0.1);
-    cor_matrix.set_elem_at(2, 1, 0.1);
+    Matrix<double>* cor_matrix = new Matrix<double>(3, 3);
+    cor_matrix->set_elem_at(0, 0, 1.);
+    cor_matrix->set_elem_at(1, 1, 1.);
+    cor_matrix->set_elem_at(2, 2, 1.);
+    cor_matrix->set_elem_at(0, 1, 0.1);
+    cor_matrix->set_elem_at(0, 2, 0.1);
+    cor_matrix->set_elem_at(1, 0, 0.1);
+    cor_matrix->set_elem_at(1, 2, 0.1);
+    cor_matrix->set_elem_at(2, 0, 0.1);
+    cor_matrix->set_elem_at(2, 1, 0.1);
 
-    /* NE FONCTIONNE PAS ICI...
     BrownianND* browniannd = new BrownianND(normal, 3, cor_matrix);
-    browniannd->simulate(0., 1., 100);
+    browniannd->simulate(0., 1., 10);
     SinglePath* path20 = browniannd->get_path(0);
     SinglePath* path21 = browniannd->get_path(1);
     SinglePath* path22 = browniannd->get_path(2);
     display_values(path20, "Brownian 3D, 1 :", true);
     display_values(path21, "Brownian 3D, 2 :", true);
     display_values(path22, "Brownian 3D, 3 :", true);
-    */
 
     // Euler process
     /*

@@ -7,11 +7,10 @@
 
 class BrownianND : public RandomProcess {
     protected:
-        int dimension;
-        Matrix<double> correlation_matrix;
+        Matrix<double>* correlation_matrix;
 
     public:
-        BrownianND(Normal* gen, int dim, Matrix<double> cor);
+        BrownianND(Normal* gen, int dim, Matrix<double>* cor);
         void simulate(double start_time, double end_time, size_t nb_steps);
         ~BrownianND();
 };
