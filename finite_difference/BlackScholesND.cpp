@@ -1,4 +1,4 @@
-#include "BlackScholesND.h"
+#include "BlackScholesND.hpp"
 #include <iostream>
 
 BlackScholesND::BlackScholesND(Normal* gen, Matrix<double>* initial_spots, Matrix<double>* rates, Matrix<double>* vols,Matrix<double>* corrs) :

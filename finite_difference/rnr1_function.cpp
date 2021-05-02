@@ -1,4 +1,4 @@
-#include "rnr1_function.h"
+#include "rnr1_function.hpp"
 #include <iostream>
 
 RNR1Function::RNR1Function() {}
