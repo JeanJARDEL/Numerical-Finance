@@ -33,11 +33,9 @@ void test_random_generator() {
     RandomGenerator* binomial = new Binomial(100, 0.7);
     compute_generation(binomial, "Binomial");
 
-    /*
     vector<double> probas {0.2, 0.5, 0.3};
     RandomGenerator* finite_set = new FiniteSet(probas);
     compute_generation(finite_set, "Finite set");
-    */
 
     RandomGenerator* poisson1 = new Poisson(2.);
     compute_generation(poisson1, "Poisson (1st algo)");

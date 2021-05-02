@@ -64,6 +64,8 @@ set(NUMERICAL_FINANCE_SOURCES
     "finite_difference/pde_grid_2d.cpp"
     "finite_difference/black_scholes_nd.hpp"
     "finite_difference/black_scholes_nd.cpp"
+    "finite_difference/static_control_variate.hpp"
+    "finite_difference/static_control_variate.cpp"
     "finite_difference/TESTER_finite_difference.hpp"
     "finite_difference/TESTER_finite_difference.cpp"
 
