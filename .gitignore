@@ -7,3 +7,4 @@ random_generator/.DS_Store
 *.o
 *.save
 *.cbp
+*.exe

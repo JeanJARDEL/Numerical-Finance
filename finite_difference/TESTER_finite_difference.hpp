@@ -15,6 +15,7 @@
 #include "vanilla_terminal_condition.hpp"
 #include "null_function.hpp"
 #include "pde_grid_2d.hpp"
+#include "MonteCarlo.hpp"
 #include "../utils/matrix.hpp"
 #include <iostream>
 #include <vector>

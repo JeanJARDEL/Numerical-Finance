@@ -2,7 +2,7 @@
 
 void compute_generation(RandomGenerator* generator, string generator_name) {
     myLong n_sim = 100000;
-    double tol = 0.1;
+    double tol = 0.03;
     std::cout << generator_name << " :" << std::endl;
     std::cout << generator->generate() << std::endl;
     std::cout << generator->generate() << std::endl;

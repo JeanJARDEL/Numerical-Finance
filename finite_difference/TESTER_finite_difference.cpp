@@ -80,6 +80,15 @@ void test_finite_difference() {
     display_values(path31, "Black Scholes 3D, 2 :", true);
     display_values(path32, "Black Scholes 3D, 3 :", true);
 
+    printf("95%% normal quantile:%4.2f\n",MonteCarlo::inv_cdf(0.975));
+
+    Matrix<double> temp(1,3,new double[3]{0.2,0.5,0.3});
+    BasketPayoff payoff_fun(temp);
+    MonteCarlo MC(&payoff_fun,&BSND);
+
+    MC.compute_payoff_fixed_number(0., 1., 100, 1000);
+    MC.compute_payoff_conf(0., 1., 100,0.5,0.95);
+
     /*
     // Euler process
     BlackScholes1D* euler = new BSEuler1D(new Normal(0., 1.), spot, rate, volatility);
