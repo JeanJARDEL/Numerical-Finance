@@ -3,6 +3,6 @@
 #include <iostream>
 
 int main() {
-    test_finite_difference();
-    // test_random_generator();
+    // test_finite_difference();
+    test_random_generator();
 };

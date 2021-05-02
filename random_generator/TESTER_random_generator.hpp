@@ -4,6 +4,7 @@
 #include "uniform_generator.hpp"
 #include "discrete_generator.hpp"
 #include "continuous_generator.hpp"
+#include "quasi_random_generator.hpp"
 #include <iostream>
 #include <vector>
 #include <stdio.h>

@@ -7,7 +7,6 @@ void compute_generation(RandomGenerator* generator, string generator_name) {
     std::cout << generator->generate() << std::endl;
     std::cout << generator->generate() << std::endl;
     std::cout << generator->generate() << std::endl;
-    //RandomGenerator* test_generator = new FiniteSet();
 
     double* var_ptr = new double;
     double* mean_ptr = new double;
@@ -34,9 +33,11 @@ void test_random_generator() {
     RandomGenerator* binomial = new Binomial(100, 0.7);
     compute_generation(binomial, "Binomial");
 
-    vector<double> probas { 0.2, 0.5, 0.3};;
+    /*
+    vector<double> probas {0.2, 0.5, 0.3};
     RandomGenerator* finite_set = new FiniteSet(probas);
     compute_generation(finite_set, "Finite set");
+    */
 
     RandomGenerator* poisson1 = new Poisson(2.);
     compute_generation(poisson1, "Poisson (1st algo)");
@@ -58,4 +59,7 @@ void test_random_generator() {
 
     RandomGenerator* normal3 = new Normal(1., 1., 3);
     compute_generation(normal3, "Normal (rejection sampling)");
+
+    RandomGenerator* vdch_sequence = new VDCHSequence(3, 5);
+    compute_generation(vdch_sequence, "Van Der Corput and Halton sequence");
 };

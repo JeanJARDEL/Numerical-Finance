@@ -29,6 +29,8 @@ set(NUMERICAL_FINANCE_SOURCES
     "random_generator/discrete_generator.cpp"
     "random_generator/continuous_generator.hpp"
     "random_generator/continuous_generator.cpp"
+    "random_generator/quasi_random_generator.hpp"
+    "random_generator/quasi_random_generator.cpp"
     "random_generator/TESTER_random_generator.hpp"
     "random_generator/TESTER_random_generator.cpp"
 
