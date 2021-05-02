@@ -30,6 +30,8 @@ class Matrix
         Matrix& operator=(const Matrix &cop);
         Matrix cholesky() const;
 
+        int get_num_rows() const {return m_rows;};
+        int get_num_cols() const {return m_cols;};
         virtual ~Matrix();
 
     protected:

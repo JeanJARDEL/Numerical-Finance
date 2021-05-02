@@ -3,7 +3,6 @@
 
 #include "random_process.hpp"
 #include "../utils/matrix.hpp"
-#include <vector>
 
 class BrownianND : public RandomProcess {
     protected:

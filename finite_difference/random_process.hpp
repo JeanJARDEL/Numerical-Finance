@@ -12,9 +12,9 @@ class RandomProcess {
         int dimension;
 
     public:
-        RandomProcess(RandomGenerator* gen, int dim);
+        RandomProcess(RandomGenerator* gen, int dim = 1);
         virtual void simulate(double start, double end, size_t nb_steps) = 0;
-        SinglePath* get_path(size_t index);
+        SinglePath* get_path(int index);
         ~RandomProcess();
 };
 

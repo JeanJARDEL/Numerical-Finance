@@ -7,6 +7,7 @@
 #include "brownian_nd.hpp"
 #include "black_scholes_1d.hpp"
 #include "black_scholes_2d.hpp"
+#include "BlackScholesND.h"
 #include "heston.hpp"
 #include "r2r1_function.hpp"
 #include "bs.hpp"

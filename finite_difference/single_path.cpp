@@ -6,9 +6,8 @@ SinglePath::SinglePath(double start, double end, size_t nb_steps) :
     start_time(start),
     end_time(end),
     nb_steps(nb_steps) {
-        if (nb_steps == 0) {
+        if (nb_steps == 0)
             throw invalid_argument("the number of steps is null");
-        }
         time_step = (end_time - start_time) / nb_steps;
 }
 
@@ -40,18 +39,6 @@ double SinglePath::get_value(double time) {
             }
         }
     }
-}
-
-vector<double>& SinglePath::get_values() {
-    return values;
-}
-
-vector<double>& SinglePath::get_times() {
-    return times;
-}
-
-double SinglePath::get_time_step() {
-    return time_step;
 }
 
 SinglePath::~SinglePath() {}
